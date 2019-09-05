@@ -145,7 +145,7 @@ In [16]: df.columns
 Out[16]: Index(['A', 'B', 'C', 'D'], dtype='object')
 ```
 
-[DataFrame.to_numpy()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy) 会给出一个比较底层的NumPy对象。注意，当你的 [DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame) 有多个列并且每列的数据类型不同时，这个操作是不可行的，这也可以说是Pandas和NumPy之间的根本区别：**NumPy的每一个array对象只有一种数据类型，但是Pandas的每一列的数据类型都是相同的（译者注：Pandas不需要像Numpy那样所有元素的类型都相同）**. 当你调用 [DataFrame.to_numpy()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)时, Pandas会寻找可以涵盖DataFrame中所有元素类型的NumPy数据类型。 这可能最终成为对象，需要将每个值强制转换为Python对象。
+[DataFrame.to_numpy()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy) 会给出一个比较底层的NumPy对象。注意，当你的 [DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame) 有多个列并且每列的数据类型不同时，这个操作的开销会很大，这也可以说是Pandas和NumPy之间的根本区别：**NumPy的每一个array对象只有一种数据类型，但是Pandas的每一列的数据类型都是相同的（译者注：Pandas不需要像Numpy那样所有元素的类型都相同）**. 当你调用 [DataFrame.to_numpy()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)时, Pandas会寻找可以涵盖DataFrame中所有元素类型的NumPy数据类型。 这可能最终成为对象，需要将每个值强制转换为Python对象。
 
 对于 ``df``,  对于所有值是浮点数的[DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame)  [DataFrame.to_numpy()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy) 操作是高效的，并且不会复制数据。
 
